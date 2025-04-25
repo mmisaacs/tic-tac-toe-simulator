@@ -21,6 +21,9 @@ public class Main extends Application {
         grid.setVgap(5);
 
         grid.setStyle("-fx-padding: 20; -fx-background-color: #f4f4f9; -fx-border-color: #333;");
+        stage.setTitle("Tic Tac Toe");
+        stage.setScene(new javafx.scene.Scene(grid));
+        stage.show();
     }
 
     private void handleMove(int row, int col) {
