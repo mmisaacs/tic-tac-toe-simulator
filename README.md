@@ -1,4 +1,5 @@
 # Tic-Tac-Toe Simulator
+Simple GUI program that allows two players to play Tic-Tac-Toe
 ## GUI: JavaFX
 1. GridPane: used to make a 3x3 board
 
