@@ -76,7 +76,6 @@ public class Main extends Application {
                     turn.setText("Player X's Turn");
                 }
                 xTurn = !xTurn;
-
             }
         }
     }
@@ -142,15 +141,16 @@ public class Main extends Application {
     }
 
     private void setWinningTiles(int x1, int y1, int x2, int y2, int x3, int y3){
-        if(!xTurn){
-            board[x1][y1].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
-            board[x2][y2].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
-            board[x3][y3].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
-        }
-        else{
+
+        if(xTurn){
             board[x1][y1].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
             board[x2][y2].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
             board[x3][y3].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
+        }
+        else{
+            board[x1][y1].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
+            board[x2][y2].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
+            board[x3][y3].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
         }
     }
 }
