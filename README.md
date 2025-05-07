@@ -1,7 +1,9 @@
 # Tic-Tac-Toe Simulator
 Simple GUI program that allows two players to play Tic-Tac-Toe
 ## GUI: JavaFX
-1. GridPane: used to make a 3x3 board
+1. GridPane: Creates GUI that hosts games
+2. Board: 3x3 board to hold the buttons
+3. Buttons: when pressed, will change to current player's role and color 
 
 ## Logic
 1. **handleMove()**: this method takes the row and column clicked as a parameter and changes the board to match the user's move
