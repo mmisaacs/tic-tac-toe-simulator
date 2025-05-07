@@ -1,14 +1,22 @@
 package org.example;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.scene.text.Font;
+import javafx.scene.control.Label;
 
 public class Main extends Application {
     public boolean xTurn = true;
     private Button[][] board = new Button[3][3];
+
+    public Label turn;
 
     public static void main(String[] args) {
         launch(args);
@@ -21,8 +29,31 @@ public class Main extends Application {
         grid.setVgap(5);
 
         grid.setStyle("-fx-padding: 20; -fx-background-color: #f4f4f9; -fx-border-color: #333;");
+        for (int row = 0; row< 3; row ++){
+            for (int col = 0; col<3; col++){
+                Button cell = new Button();
+                cell.setPrefSize(100,100);
+                cell.setFont(new Font(24));
+
+                cell.setStyle("-fx-background-color: #fff; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #333;");
+                final int r = row;
+                final int c = col;
+
+                cell.setOnAction(e->handleMove(r,c));
+
+                board[row][col]= cell;
+                grid.add(cell, col, row);
+            }
+        }
+
+        turn = new Label("Player X's turn");
+        turn.setStyle("-fx-font-weight: bold");
+        turn.setMaxWidth(Double.MAX_VALUE);
+        turn.setAlignment(Pos.CENTER);
+        grid.add(turn, 1,4);
+
         stage.setTitle("Tic Tac Toe");
-        stage.setScene(new javafx.scene.Scene(grid));
+        stage.setScene(new javafx.scene.Scene(grid,340,360));
         stage.show();
     }
 
@@ -41,7 +72,14 @@ public class Main extends Application {
             } else if (isBoardFull()) {
                 showAlert("It's a draw!");
             } else {
+                if(xTurn){
+                    turn.setText("Player O's Turn");
+                }
+                else{
+                    turn.setText("Player X's Turn");
+                }
                 xTurn = !xTurn;
+
             }
         }
     }
