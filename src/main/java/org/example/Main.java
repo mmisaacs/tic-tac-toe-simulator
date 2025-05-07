@@ -2,12 +2,9 @@ package org.example;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
@@ -68,7 +65,7 @@ public class Main extends Application {
             }
 
             if (checkWinner()) {
-                showAlert((xTurn ? "X" : "O") + "wins!");
+                showAlert((xTurn ? "X" : "O") + " wins!");
             } else if (isBoardFull()) {
                 showAlert("It's a draw!");
             } else {
@@ -119,12 +116,41 @@ public class Main extends Application {
 
     private boolean checkWinner() {
         for (int i = 0; i < 3; i++) {
-            if (checkLine(board[i][0], board[i][1], board[i][2]) ||
-                    checkLine(board[0][i],board[1][i],board[2][i])){
+            if (checkLine(board[i][0], board[i][1], board[i][2])){
+                setWinningTiles(i,0,i,1,i,2);
+                turn.setText("Game Over");
+                return true;
+            }
+            else if(checkLine(board[0][i],board[1][i],board[2][i])){
+                setWinningTiles(0,i,1,i,2,i);
+                turn.setText("Game Over");
                 return true;
             }
         }
-        return  checkLine(board[0][0], board[1][1], board[2][2]) ||
-                checkLine(board[0][2], board[1][1], board[2][0]);
+
+        if(checkLine(board[0][0], board[1][1], board[2][2])){
+            setWinningTiles(0,0,1,1,2,2);
+            turn.setText("Game Over");
+            return true;
+        }
+        else if(checkLine(board[0][2], board[1][1], board[2][0])){
+            setWinningTiles(0,2,1,1,2,0);
+            turn.setText("Game Over");
+            return true;
+        }
+        return false;
+    }
+
+    private void setWinningTiles(int x1, int y1, int x2, int y2, int x3, int y3){
+        if(!xTurn){
+            board[x1][y1].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
+            board[x2][y2].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
+            board[x3][y3].setStyle("-fx-background-color: #721c24; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #ffdce0;");
+        }
+        else{
+            board[x1][y1].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
+            board[x2][y2].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
+            board[x3][y3].setStyle("-fx-background-color: #004085; -fx-border-color: #333; -fx-border-width: 2px; -fx-font-weight: bold; -fx-text-fill: #d1e7ff;");
+        }
     }
 }
