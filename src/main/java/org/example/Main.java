@@ -65,7 +65,7 @@ public class Main extends Application {
             }
 
             if (checkWinner()) {
-                showAlert((xTurn ? "X" : "O") + "wins!");
+                showAlert((xTurn ? "X" : "O") + " wins!");
             } else if (isBoardFull()) {
                 showAlert("It's a draw!");
             } else {
