@@ -10,3 +10,4 @@ Simple GUI program that allows two players to play Tic-Tac-Toe
 4. **showAlert()**: this method makes a JavaFX Alert and shows a popup when someone wins/ties and the game ends
 5. **checkLine()**: this method returns true if 3 spaces in a row are equal
 6. **checkWinner()**: this method uses the logic of the tic-tac-toe board and checks for the winnning cases
+7. **setWinningTiles()**: to show the winning path, this method alternates the text color and background color of the winning tiles
